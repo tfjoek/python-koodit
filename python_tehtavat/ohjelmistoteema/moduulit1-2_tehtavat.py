@@ -23,4 +23,21 @@ print(2 * (x + y), x * y)
 
 #Kirjoita ohjelma, joka kysyy kolme kokonaislukua. Ohjelma tulostaa lukujen summan, tulon ja keskiarvon.
 
+luku1 = int(input("Anna ensimmäinen luku: "))
+luku2 = int(input("Anna toinen luku: "))
+luku3 = int(input("Anna kolmas luku: "))
+print(f"Summa: {luku1 + luku2 + luku3}, Tulo: {luku1 * luku2 * luku3}, Keskiarvo: {(luku1 + luku2 + luku3) / 3}")
+
+
+
 #Kirjoita ohjelma, joka kysyy käyttäjältä massan keskiaikaisten mittojen mukaan leivisköinä, nauloina ja luoteina. Ohjelma muuntaa syötteen täysiksi kilogrammoiksi ja grammoiksi sekä ilmoittaa tuloksen käyttäjälle.
+
+l = float(input("Leiviskät: "))
+n = float(input("Naulat: "))
+lu = float(input("Luodit: "))
+
+grammat = l * 8516 + n * 425.6 + lu * 13.3
+kg = int(grammat // 1000)
+g = grammat % 1000
+
+print(f"{kg} kg ja {g:.2f} g")
