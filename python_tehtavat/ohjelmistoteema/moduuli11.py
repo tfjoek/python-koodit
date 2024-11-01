@@ -1,38 +1,53 @@
-class Julkaisu:
-    def __init__(self, nimi):
-        self.nimi = nimi
+class Auto:
+    def __init__(self, rekisteritunnus, huippunopeus):
+        self.rekisteritunnus = rekisteritunnus
+        self.huippunopeus = huippunopeus
+        self.nopeus = 0
+        self.matkamittari = 0
+
+    def aseta_nopeus(self, nopeus):
+        if 0 <= nopeus <= self.huippunopeus:
+            self.nopeus = nopeus
+        else:
+            print("Nopeus ei voi ylittää huippunopeutta tai olla negatiivinen.")
+
+    def aja(self, tuntia):
+        self.matkamittari += self.nopeus * tuntia
 
     def tulosta_tiedot(self):
-        print(f'Julkaisun nimi: {self.nimi}')
+        print(f'Rekisteritunnus: {self.rekisteritunnus}, Huippunopeus: {self.huippunopeus} km/h, Matkamittari: {self.matkamittari:.2f} km')
 
 
-class Kirja(Julkaisu):
-    def __init__(self, nimi, kirjoittaja, sivumaara):
-        super().__init__(nimi)
-        self.kirjoittaja = kirjoittaja
-        self.sivumaara = sivumaara
+class Sahkoauto(Auto):
+    def __init__(self, rekisteritunnus, huippunopeus, akkukapasiteetti):
+        super().__init__(rekisteritunnus, huippunopeus)
+        self.akkukapasiteetti = akkukapasiteetti
 
     def tulosta_tiedot(self):
         super().tulosta_tiedot()
-        print(f'Kirjoittaja: {self.kirjoittaja}')
-        print(f'Sivumäärä: {self.sivumaara}')
+        print(f'Akkukapasiteetti: {self.akkukapasiteetti} kWh')
 
 
-class Lehti(Julkaisu):
-    def __init__(self, nimi, paatoimittaja):
-        super().__init__(nimi)
-        self.paatoimittaja = paatoimittaja
+class Polttomoottoriauto(Auto):
+    def __init__(self, rekisteritunnus, huippunopeus, bensatankin_koko):
+        super().__init__(rekisteritunnus, huippunopeus)
+        self.bensatankin_koko = bensatankin_koko
 
     def tulosta_tiedot(self):
         super().tulosta_tiedot()
-        print(f'Päätoimittaja: {self.paatoimittaja}')
+        print(f'Bensatankin koko: {self.bensatankin_koko} l')
 
 
 # Pääohjelma
 if __name__ == "__main__":
-    julkaisu1 = Lehti("Aku Ankka", "Aki Hyyppä")
-    julkaisu2 = Kirja("Hytti n:o 6", "Rosa Liksom", 200)
+    sahkoauto = Sahkoauto("ABC-15", 180, 52.5)
+    polttomoottoriauto = Polttomoottoriauto("ACD-123", 165, 32.3)
 
-    julkaisu1.tulosta_tiedot()
-    print()  # Tyhjää riviä erottamaan julkaisut
-    julkaisu2.tulosta_tiedot()
+    sahkoauto.aseta_nopeus(150)
+    polttomoottoriauto.aseta_nopeus(120)
+    sahkoauto.aja(3)
+    polttomoottoriauto.aja(3)
+
+    sahkoauto.tulosta_tiedot()
+    print()  # Tyhjää riviä erottamaan autot
+    polttomoottoriauto.tulosta_tiedot()
