@@ -9,9 +9,3 @@ print(np.degrees(b))
 
 
 
-
-
-A = np.array([0, 90, 180])
-
-for i in A:
-    print(np.radians(i))
