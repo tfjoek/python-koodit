@@ -32,7 +32,6 @@ import mysql.connector
 
 app = Flask(__name__)
 
-# Muista vaihtaa alla olevat tietokantayhteyden tiedot omiin arvoihisi
 db_connection = mysql.connector.connect(
     host="localhost",
     user="root",
