@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+  <script>
+    const year = parseInt(prompt("Enter a year:"));
+    let isLeapYear = false;
+    if (year % 4 === 0) {
+      if (year % 100 !== 0 || year % 400 === 0) {
+        isLeapYear = true;
+      }
+    }
+    document.write(`${year} is ${isLeapYear ? "a leap year" : "not a leap year"}.`);
+  </script>
+</body>
+</html>
